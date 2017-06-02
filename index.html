@@ -1,0 +1,93 @@
+<html>
+
+<head>
+    <title>todoWapp</title>
+    
+    <!-- Latest compiled and minified CSS & JS -->
+    <link rel="stylesheet" media="screen" href="http://netdna.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
+    <link rel="stylesheet" media="screen" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    
+    <script src="http://code.jquery.com/jquery.js"></script>
+    <script src="http://netdna.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
+    
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+
+    <div class="container">
+        <div class="heading text-center">
+            <h1>To Do:</h1>
+            <button id="butt">New Task</button>
+        </div>
+        <hr>
+        <div class="task-group">
+            <div class="task">
+                <h3 class="task-name">Task Name</h3> <button class="edit">edit</button>
+                <hr>
+
+                <p class="desc">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Cum illo, enim mollitia suscipit ducimus nihil harum commodi ipsa veritatis nobis dolorum perferendis perspiciatis incidunt sint nam esse, eligendi ab, blanditiis.</p>
+                <button class="edit-para">edit</button>
+                <hr>
+
+                <button class="remove"><i class="fa fa-times" aria-hidden="true"></i></button>
+                
+            </div>
+        </div>
+
+
+
+    </div>
+
+
+</body>
+<script src="http://code.jquery.com/jquery.js"></script>
+<script src="todo.js"></script>
+
+<script>
+    $('.task-group').on("click", ".edit-para", function () {
+        var taskdesc = prompt("Description: ");
+        $(this).parent().find(".desc").text(taskdesc);
+    });
+
+    $('.task-group').on("click", ".edit", function () {
+        var taskname = prompt("Task Name: ");
+        $(this).parent().find(".task-name").text(taskname);
+    });
+
+    $('.task-group').on("click", ".remove", function () {
+        $(this).parent().remove();
+    });
+
+    $('#butt').click(function () {
+
+        var task = $("<div></div>").attr("class", "task")
+        .append(
+            $("<h3/>").text("Task Name").attr("class", "task-name")
+        )
+        .append(
+            $("<button/>").attr("class", "edit").text("edit")
+        )
+        .append(
+            $("<hr>")
+        )
+        .append(
+            $("<p/>").text("Lorem ipsum dolor sit amet, consectetur adipisicing elit. Cum illo, enim mollitia suscipit ducimus nihil harum commodi ipsa veritatis nobis dolorum perferendis perspiciatis incidunt sint nam esse, eligendi ab, blanditiis.").attr("class", "desc")
+        )
+        .append(
+            $("<button/>").attr("class", "edit-para").text("edit")
+        )
+        .append(
+            $("<hr>")
+        )
+        .append(
+            $("<button/>").attr("class", "remove").html("<i class='fa fa-times' aria-hidden='true'>")
+        )
+        
+        $('.task-group').append(task);
+    });
+
+</script>
+
+</html>
